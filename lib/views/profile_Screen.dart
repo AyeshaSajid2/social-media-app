@@ -1,9 +1,10 @@
-import 'package:anonymous_app/model/postModel.dart';
-import 'package:anonymous_app/view_model/profile_view_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../auth/authService.dart';
+import '../model/postModel.dart';
+import '../view_model/profile_view_model.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override

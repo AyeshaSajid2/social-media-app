@@ -14,7 +14,7 @@ class UserModel {
     return UserModel(
       id: doc.id,
       anonymousName:
-          data['anonymousName'] ?? '', // Adjust as per your Firestore structure
+      data['anonymousName'] ?? '', // Adjust as per your Firestore structure
     );
   }
 }

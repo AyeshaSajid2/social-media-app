@@ -1,10 +1,11 @@
-import 'package:anonymous_app/view_model/post_view_model.dart';
-import 'package:anonymous_app/views/user_profile_Screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media_app/views/user_profile_Screen.dart';
 import '../auth/authService.dart';
 import '../model/postModel.dart';
+import '../view_model/post_view_model.dart';
 
 class PostList extends StatelessWidget {
   @override
@@ -66,7 +67,8 @@ class PostList extends StatelessWidget {
               'Posted by: ${post.originalAnonymousName ?? post.anonymousName}',
               style: GoogleFonts.inter(
                 fontSize: 14,
-                color: Colors.grey[600],
+                color: Color(0xFF538F86),
+
               ),
             ),
             SizedBox(height: 4),

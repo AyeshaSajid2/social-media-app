@@ -1,11 +1,12 @@
-import 'package:anonymous_app/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:anonymous_app/auth/authService.dart';
-import 'package:anonymous_app/views/chat_Screen.dart';
-import 'package:anonymous_app/views/post_Screen.dart';
-import 'package:anonymous_app/views/profile_Screen.dart';
+import 'package:social_media_app/views/post_Screen.dart';
+import 'package:social_media_app/views/profile_Screen.dart';
+
+import '../auth/authService.dart';
+import '../view_model/home_view_model.dart';
+import 'chat_Screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -18,14 +19,14 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.teal,
               surfaceTintColor: Colors.transparent,
               title: Text(
-                'AnonSocial',
+                'Social Media App',
                 style: GoogleFonts.inter(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue[900],
+                  color: Colors.white,
                 ),
               ),
               actions: [
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                 canvasColor: Colors.white,
               ),
               child: BottomNavigationBar(
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.teal,
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: Icon(Icons.home),
@@ -57,12 +58,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.add),
-                    label: 'Add',
+                    label: 'Post',
                   ),
                 ],
                 currentIndex: viewModel.selectedIndex,
-                selectedItemColor: Colors.blue[900],
-                unselectedItemColor: Colors.blue[900],
+                selectedItemColor: Colors.teal,
+                unselectedItemColor: Colors.green,
                 showUnselectedLabels: true,
                 onTap: (int index) {
                   viewModel.setIndex(index);
@@ -99,7 +100,7 @@ class HomeScreen extends StatelessWidget {
           title: Text(
             'Create a new post',
             style: GoogleFonts.inter(
-                fontWeight: FontWeight.bold, color: Colors.blue[900]),
+                fontWeight: FontWeight.bold, color: Colors.teal),
           ),
           content: TextField(
             controller: viewModel.postController,
@@ -112,7 +113,7 @@ class HomeScreen extends StatelessWidget {
             TextButton(
               child: Text(
                 'Cancel',
-                style: GoogleFonts.inter(color: Colors.blue[900]),
+                style: GoogleFonts.inter(color: Colors.white),
               ),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -121,7 +122,7 @@ class HomeScreen extends StatelessWidget {
             TextButton(
               child: Text(
                 'Post',
-                style: GoogleFonts.inter(color: Colors.blue[900]),
+                style: GoogleFonts.inter(color: Colors.white),
               ),
               onPressed: () async {
                 String postContent = viewModel.postController.text.trim();

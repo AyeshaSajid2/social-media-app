@@ -1,9 +1,10 @@
-import 'package:anonymous_app/auth/authService.dart';
-import 'package:anonymous_app/views/home_Screen.dart';
-import 'package:anonymous_app/view_model/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import '../auth/authService.dart';
+import '../view_model/login_view_model.dart';
+import 'home_Screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/login.png',
+                      'assets/log.png',
                       height: 250,
                       width: double.infinity,
                     ),
@@ -46,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'Anonymously Share Moments and Connect!',
+                      'Share Moments and Connect!',
                       style: GoogleFonts.inter(
                         color: Colors.blue[700],
                       ),
@@ -95,77 +96,80 @@ class _LoginScreenState extends State<LoginScreen> {
                       CircularProgressIndicator()
                     else
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () async {
-                                await viewModel.login(
-                                  _emailController.text,
-                                  _passwordController.text,
-                                );
-                                if (viewModel.errorMessage == null) {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeScreen()),
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () async {
+                                  await viewModel.login(
+                                    _emailController.text,
+                                    _passwordController.text,
                                   );
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content: Text(viewModel.errorMessage!)),
-                                  );
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue[900],
-                                foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 60, vertical: 15),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                  if (viewModel.errorMessage == null) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomeScreen()),
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(viewModel.errorMessage!)),
+                                    );
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue[900],
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 60, vertical: 15),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                                child: Text(
+                                  "Login",
+                                  style: GoogleFonts.inter(),
                                 ),
                               ),
-                              child: Text(
-                                "Login",
-                                style: GoogleFonts.inter(),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            ElevatedButton(
-                              onPressed: () async {
-                                await viewModel.register(
-                                  _emailController.text,
-                                  _passwordController.text,
-                                );
-                                if (viewModel.errorMessage == null) {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeScreen()),
+                              const SizedBox(width: 8),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  await viewModel.register(
+                                    _emailController.text,
+                                    _passwordController.text,
                                   );
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content: Text(viewModel.errorMessage!)),
-                                  );
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue[900],
-                                foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 55, vertical: 15),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                  if (viewModel.errorMessage == null) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomeScreen()),
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(viewModel.errorMessage!)),
+                                    );
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue[900],
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 55, vertical: 15),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                                child: Text(
+                                  "Register",
+                                  style: GoogleFonts.inter(),
                                 ),
                               ),
-                              child: Text(
-                                "Register",
-                                style: GoogleFonts.inter(),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     const SizedBox(height: 20),

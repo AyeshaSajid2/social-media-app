@@ -1,10 +1,11 @@
-import 'package:anonymous_app/auth/authService.dart';
-import 'package:anonymous_app/view_model/user_profile_view_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '../auth/authService.dart';
 import '../model/postModel.dart';
 import '../model/userModel.dart';
+import '../view_model/user_profile_view_model.dart';
 
 class UserProfileScreen extends StatelessWidget {
   final String userId;
@@ -48,9 +49,9 @@ class UserProfileScreen extends StatelessWidget {
         if (snapshot.hasError) {
           return Center(
               child: Text(
-            'Error: ${snapshot.error}',
-            style: GoogleFonts.inter(),
-          ));
+                'Error: ${snapshot.error}',
+                style: GoogleFonts.inter(),
+              ));
         }
         if (!snapshot.hasData) {
           return Center(child: CircularProgressIndicator());
@@ -95,9 +96,9 @@ class UserProfileScreen extends StatelessWidget {
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(
                 child: Text(
-              'No posts yet.',
-              style: GoogleFonts.inter(),
-            ));
+                  'No posts yet.',
+                  style: GoogleFonts.inter(),
+                ));
           }
           List<Post> posts = snapshot.data!;
           return ListView.builder(

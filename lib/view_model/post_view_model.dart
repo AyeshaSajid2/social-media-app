@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:anonymous_app/auth/authService.dart';
+import '../auth/authService.dart';
 import '../model/postModel.dart';
 
 class PostListViewModel extends ChangeNotifier {

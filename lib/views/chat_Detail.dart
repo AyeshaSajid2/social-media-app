@@ -1,8 +1,10 @@
-import 'package:anonymous_app/view_model/chat_detail_view_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../view_model/chat_detail_view_model.dart';
 
 class ChatDetailScreen extends StatefulWidget {
   final String recipientId;
@@ -50,7 +52,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                     bool isMe = message['senderId'] == viewModel.currentUserId;
                     return Container(
                       alignment:
-                          isMe ? Alignment.centerRight : Alignment.centerLeft,
+                      isMe ? Alignment.centerRight : Alignment.centerLeft,
                       margin: EdgeInsets.symmetric(vertical: 5),
                       child: Column(
                         crossAxisAlignment: isMe

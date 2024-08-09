@@ -15,7 +15,7 @@ class ProfileViewModel extends ChangeNotifier {
         .orderBy('timestamp', descending: false)
         .snapshots()
         .map((snapshot) =>
-            snapshot.docs.map((doc) => Post.fromFirestore(doc)).toList());
+        snapshot.docs.map((doc) => Post.fromFirestore(doc)).toList());
   }
 
   Future<String> getAnonymousName() async {

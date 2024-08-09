@@ -1,8 +1,10 @@
-import 'package:anonymous_app/model/postModel.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+import '../model/postModel.dart';
 
 class AuthService with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -45,8 +47,8 @@ class AuthService with ChangeNotifier {
   }
 
   String _generateRandomName() {
-    const adjectives = ['Brave', 'Clever', 'Happy', 'Sad', 'Angry'];
-    const nouns = ['Lion', 'Tiger', 'Bear', 'Shark', 'Eagle'];
+    const adjectives = ['Rabia', 'Zainab', 'Marium', 'Sad', 'Yamna'];
+    const nouns = ['Maria', 'Ali', 'Noor', 'Fatima', 'Mossa'];
     final random = Random();
     return '${adjectives[random.nextInt(adjectives.length)]} ${nouns[random.nextInt(nouns.length)]}';
   }
@@ -79,7 +81,7 @@ class AuthService with ChangeNotifier {
   Future<void> savePost(String content) async {
     try {
       String anonymousName =
-          await getAnonymousName(); // Get user's anonymous name
+      await getAnonymousName(); // Get user's anonymous name
       await _firestore.collection('posts').add({
         'userId': user!.uid,
         'anonymousName': anonymousName,
@@ -134,13 +136,13 @@ class AuthService with ChangeNotifier {
         .orderBy('timestamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Map<String, dynamic>> snapshot) =>
-            snapshot.docs.map((doc) => Post.fromFirestore(doc)).toList());
+        snapshot.docs.map((doc) => Post.fromFirestore(doc)).toList());
   }
 
   Future<String> getAnonymousName() async {
     String userId = _auth.currentUser!.uid;
     DocumentSnapshot<Map<String, dynamic>> userDoc =
-        await _firestore.collection('users').doc(userId).get();
+    await _firestore.collection('users').doc(userId).get();
     return userDoc['anonymousName'];
   }
 

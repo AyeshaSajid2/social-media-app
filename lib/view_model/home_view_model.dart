@@ -1,6 +1,9 @@
-import 'package:anonymous_app/views/login_Screen.dart';
+
 import 'package:flutter/material.dart';
-import 'package:anonymous_app/auth/authService.dart';
+
+import '../auth/authService.dart';
+import '../views/login_Screen.dart';
+
 
 class HomeViewModel extends ChangeNotifier {
   final AuthService authService;

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:anonymous_app/auth/authService.dart';
+
+import '../auth/authService.dart';
 
 class LoginViewModel extends ChangeNotifier {
   final AuthService _authService;
@@ -35,6 +36,7 @@ class LoginViewModel extends ChangeNotifier {
       _setLoading(false);
     }
   }
+
 
   void _setLoading(bool value) {
     _isLoading = value;

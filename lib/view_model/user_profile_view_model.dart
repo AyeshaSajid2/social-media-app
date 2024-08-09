@@ -1,8 +1,9 @@
-import 'package:anonymous_app/auth/authService.dart';
-import 'package:anonymous_app/model/postModel.dart';
-import 'package:anonymous_app/model/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+
+import '../auth/authService.dart';
+import '../model/postModel.dart';
+import '../model/userModel.dart';
 
 class UserProfileViewModel extends ChangeNotifier {
   final AuthService authService;

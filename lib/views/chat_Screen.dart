@@ -1,8 +1,10 @@
-import 'package:anonymous_app/views/chat_Detail.dart';
-import 'package:anonymous_app/view_model/chat_screen_view_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import '../view_model/chat_screen_view_model.dart';
+import 'chat_Detail.dart';
 
 class ChatScreen extends StatelessWidget {
   @override
@@ -39,11 +41,11 @@ class ChatScreenContent extends StatelessWidget {
               }
               return Card(
                 color: Colors.white,
-                shadowColor: Colors.blue[100],
+                shadowColor: Colors.teal[100],
                 elevation: 8.0,
                 child: ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: Colors.blue[900],
+                    backgroundColor: Colors.teal,
                     foregroundColor: Colors.white,
                     child: Text(
                       user.anonymousName[0],
